@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Application</title>
+    <link rel="stylesheet" href="job.css">
+    <link rel="icon" type="image/png" href="./img/logo-with tag.png">
+    <script type="module">
+        // Import Firebase SDK
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-app.js";
+        import { getDatabase, ref, push, set } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-database.js";
+
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyB4mPiMR9yMiFCLxjgc8zGw0o08Km1NueI",
+            authDomain: "jobber-2f204.firebaseapp.com",
+            databaseURL: "https://jobber-2f204-default-rtdb.firebaseio.com",
+            projectId: "jobber-2f204",
+            storageBucket: "jobber-2f204.firebasestorage.app",
+            messagingSenderId: "983082874351",
+            appId: "1:983082874351:web:af1883848624a138f5f21a"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+
+        // Function to handle form submission
+        window.submitApplication = function(event) {
+            event.preventDefault();
+
+            const fullName = document.getElementById("fullName").value;
+            const email = document.getElementById("email").value;
+            const age = document.getElementById("age").value;
+            const gender = document.getElementById("gender").value;
+            const country = document.getElementById("country").value;
+            const state = document.getElementById("state").value;
+            const education = document.getElementById("education").value;
+            const heardFrom = document.getElementById("heardFrom").value;
+
+            if (fullName === "" || email === "" || age === "" || country === "" || state === "") {
+                alert("Please fill in all required fields.");
+                return;
+            }
+
+            const applicationRef = push(ref(db, "jobApplications"));
+            set(applicationRef, {
+                fullName,
+                email,
+                age,
+                gender,
+                country,
+                state,
+                education,
+                heardFrom,
+                submittedAt: new Date().toISOString()
+            })
+            .then(() => {
+                alert("Application submitted successfully!");
+                document.getElementById("jobApplicationForm").reset();
+            })
+            .catch(error => {
+                console.error("Error submitting application: ", error);
+                alert("Failed to submit application. Please try again.");
+            });
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <div class="logo">
+           <img src="./img/logo-with tag.png" alt="logo">
+        </div>
+        <div class="dropdown">
+            <a href="./nav.html">
+                <div id="nav">
+                    <div><hr class="navi"></div>
+                    <div><hr class="navi"></div>
+                    <div><hr class="navi"></div>
+                </div>
+            </a>
+        </div>
+        <div class="desk">
+            <a href="./index.html"><p>Home</p></a>
+            <a href="./about.html"><p>About Us</p></a>
+            <a href="./contact.html"><p>Contact Us</p></a>
+            <a href="./blog.html"><p>Blog</p></a>
+            <a href="./privacy.html"><p>Privacy Policy</p></a>
+        </div>
+    </header>
+
+    <section class="first">
+        <h1>Social Media Manager</h1>
+        <p>Elite Limited</p>
+        <p>Business Development - Business Development</p>
+        <p>Full-Time / Remote</p>
+    <h2  style="color: rgb(91, 91, 91);">Job Application Form</h2>
+    <form id="jobApplicationForm" onsubmit="submitApplication(event)">
+        <label>Full Name:</label><br>
+        <input type="text" id="fullName" required >
+
+        <label>Email:</label><br>
+        <input type="email" id="email" required>
+
+        <label>Age:</label><br>
+        <input type="number" id="age" required>
+
+        <label>Gender:</label>
+        <select id="gender" required>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+        </select>
+
+        <label>Country:</label>
+        <select id="country" required>
+            <option value="United States">United States</option>
+            <option value="Canada">Canada</option>
+            <option value="United Kingdom">United Kingdom</option>
+            <option value="Australia">Australia</option>
+            <option value="India">India</option>
+            <option value="Nigeria">Nigeria</option>
+            <option value="Other">Other</option>
+        </select>
+
+        <label>State:</label><br>
+        <input type="text" id="state" required>
+
+        <label>Education:</label><br>
+        <select id="education" required>
+            <option value="High School">High School</option>
+            <option value="Associate Degree">Associate Degree</option>
+            <option value="Bachelor's Degree">Bachelor's Degree</option>
+            <option value="Master's Degree">Master's Degree</option>
+            <option value="Doctorate">Doctorate</option>
+            <option value="Other">Other</option>
+        </select>
+
+        <label>Where did you hear about us?</label><br>
+        <select id="heardFrom" required>
+            <option value="Social Media">Social Media</option>
+            <option value="Google Search">Google Search</option>
+            <option value="Friend Referral">Friend Referral</option>
+            <option value="Job Board">Job Board</option>
+            <option value="Other">Other</option>
+        </select>
+
+        <button type="submit">Submit Application</button>
+    </form>
+    </section>
+</body>
+</html>

@@ -1,0 +1,253 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&family=Inika:wght@400;700&family=Inknut+Antiqua:wght@300;400;500;600;700;800;900&family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Instrument+Serif:ital@0;1&family=Istok+Web:ital,wght@0,400;0,700;1,400;1,700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+@media screen and (max-width: 786px) {
+    body{
+        margin: 0;
+        font-family: "Montserrat", serif;
+        font-optical-sizing: auto;
+    }
+    header{
+        display: flex;
+        justify-content: space-between;
+        position: fixed;
+        z-index: 999;
+        background-color: white;
+        width: 100%;
+        top: 0;
+    }
+    .logo{
+        padding: 15px;
+    }
+    .dropdown{
+        padding: 15px;
+        margin-right: 15px; 
+    }
+    .desk{
+        display: none;
+    }
+    .navi{
+      padding: 2px;
+      border: none;
+      margin-bottom: -5px;
+      width: 30px;
+      background-color: black;
+    }
+
+    .first{
+        padding: 80px 20px;
+        text-align: center;
+
+    }
+
+    .container {
+        width: 100%;
+        margin: auto;
+        background: white;
+        padding-bottom: 20px;
+        
+    }
+    input, textarea {
+        width: 90%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    button {
+        padding: 10px 20px;
+        background: #1D1934;
+        color: white;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+    button:hover {
+        background: #e55b00;
+    }
+
+   
+    footer{
+        background-color: #1D1934;
+        color: white;
+        padding: 15px;
+    }
+    a{
+        text-decoration: none;
+        color: inherit;
+    }
+}
+
+@media screen and (min-width: 787px) and (max-width: 999px) {
+    body{
+        margin: 0;
+        font-family: "Montserrat", serif;
+        font-optical-sizing: auto;
+    }
+    header{
+        display: flex;
+        justify-content: space-between;
+        position: fixed;
+        z-index: 999;
+        background-color: white;
+        width: 100%;
+        top: 0;
+    }
+    .logo{
+        padding: 15px;
+    }
+    .dropdown{
+        padding: 15px;
+        margin-right: 15px; 
+    }
+    .desk{
+        display: none;
+    }
+    .navi{
+      padding: 2px;
+      border: none;
+      margin-bottom: -5px;
+      width: 30px;
+      background-color: black;
+    }
+
+    .first{
+        padding: 80px 20px;
+        text-align: center;
+
+    }
+
+    .container {
+        width: 100%;
+        margin: auto;
+        background: white;
+        padding-bottom: 20px;
+        
+    }
+    input, textarea {
+        width: 90%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    button {
+        padding: 10px 20px;
+        background: #1D1934;
+        color: white;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+    button:hover {
+        background: #e55b00;
+    }
+
+    footer{
+        background-color: #1D1934;
+        color: white;
+        padding: 20px;
+        display: flex;
+        justify-content: space-evenly;
+    }
+    .low{
+        width: 60%;
+    }
+    a{
+        text-decoration: none;
+        color: inherit;
+    }
+}
+
+@media (min-width: 1000px){
+    body{
+        margin: 0;
+        font-family: "Montserrat", serif;
+        font-optical-sizing: auto;
+    }
+    header{
+        display: flex;
+        justify-content: space-between;
+        position: fixed;
+        z-index: 999;
+        background-color: white;
+        width: 100%;
+        top: 0;
+    }
+    .logo{
+        padding: 15px;
+    }
+    .dropdown{
+        padding: 20px;
+        margin-right: 15px; 
+        display: none;
+    }
+    .desk{
+        display: flex;
+        width: 40%;
+        justify-content: space-around;
+    }
+    .desk p:hover{
+        color: #1D1934;
+        font-weight: 800;
+    }
+    .navi{
+      padding: 2px;
+      border: none;
+      margin-bottom: -5px;
+      width: 30px;
+      background-color: black;
+    }
+
+    .first{
+        padding: 80px 20px;
+        text-align: center;
+
+    }
+    .diver{
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .container {
+        width: 50%;
+        margin: auto;
+        background: white;
+        padding-bottom: 20px;
+        
+    }
+    input, textarea {
+        width: 90%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    button {
+        padding: 10px 20px;
+        background: #1D1934;
+        color: white;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+    }
+    button:hover {
+        background: #e55b00;
+    }
+
+    footer{
+        background-color: #1D1934;
+        color: white;
+        padding: 20px;
+        display: flex;
+        justify-content: space-evenly;
+    }
+    .low{
+        width: 60%;
+    }
+    a{
+        text-decoration: none;
+        color: inherit;
+    }
+}

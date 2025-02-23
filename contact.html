@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | FoundIt</title>
+    <link rel="stylesheet" href="contact.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="icon" type="image/png" href="./img/logo-with tag.png">
+</head>
+<body>
+    <header>
+        <div class="logo">
+           <img src="./img/logo-with tag.png" alt="logo">
+        </div>
+        <div class="dropdown">
+            <a href="./nav.html">
+                <div id="nav">
+                    <div><hr class="navi"></div>
+                    <div><hr class="navi"></div>
+                    <div><hr class="navi"></div>
+                </div>
+            </a>
+        </div>
+        <div class="desk">
+            <a href="./index.html"><p>Home</p></a>
+            <a href="./about.html"><p>About Us</p></a>
+            <a href="./contact.html"><p>Contact Us</p></a>
+            <a href="./blog.html"><p>Blog</p></a>
+            <a href="./privacy.html"><p>Privacy Policy</p></a>
+        </div>
+    </header>
+
+    <section class="first">
+        <h1 style="color: #6E00BE;">Contact Us</h1>
+        <p>Want to feature your job listing or have a question? Send us a message, and we’ll get back to you!</p>
+
+        <div class="diver">
+            <div style="background-color: #1D1934; color: white; padding: 10px; border-radius: 20px;">
+                <h2>Contact Information</h2>
+                <p>Say something to start a live chat!</p>
+                <i class="fa-solid fa-phone-volume" style="font-size: 25px;"></i><br>
+                <p>+1012 3456 789</p>
+                <i class="fa-solid fa-envelope" style="font-size: 25px;"></i><br>
+                <p>foundit@gmail.com</p>
+                <i class="fa-solid fa-location-dot" style="font-size: 25px;"></i><br>
+                <p style="width: 50%; margin: auto;">132 Dartmouth Street Boston, Massachusetts 02156 United States</p>
+            </div>
+            
+            <div class="container">
+                <form id="contactForm">
+                    <input type="text" id="fullName" placeholder="Full Name" required>
+                    <input type="email" id="email" placeholder="Email" required>
+                    <input type="tel" id="phone" placeholder="Phone Number" required>
+                    <textarea id="message" rows="4" placeholder="Your Message" required></textarea>
+                    <button type="submit">Submit</button>
+                </form>
+                <p id="responseMessage" style="color: green; display: none;">Message Sent Successfully!</p>
+            </div>
+        </div>
+
+    </section>
+        
+    <footer>
+        <div class="low">
+            <img src="./img/logo-with tag.png" alt="">
+            <p>Discover thousands of job opportunities across all industries, with a special focus on remote and flexible work. Whether you're seeking tech, finance, healthcare, or creative roles, FoundIt connects you to your next career move—anytime, anywhere.</p>
+            <i class="fa-brands fa-facebook" style="font-size: 25px;"></i> &nbsp;
+            <i class="fa-brands fa-instagram" style="font-size: 25px;"></i> &nbsp;
+            <i class="fa-brands fa-twitter" style="font-size: 25px;"></i> &nbsp;
+        </div>
+        <div class="access">
+            <h4>Quick Access</h4>
+            <a href="./index.html"><p>Home</p></a>
+            <a href="./about.html"><p>About Us</p></a>
+            <a href="./contact.html"><p>Contact Us</p></a>
+            <a href="./blog.html"><p>Blog</p></a>
+            <a href="./privacy.html"><p>Privacy Policy</p></a>
+        </div>
+    </footer>
+    
+        <!-- Firebase SDK -->
+        <script type="module">
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-app.js";
+            import { getDatabase, ref, push } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-database.js";
+    
+            // Your Firebase config
+            const firebaseConfig = {
+                apiKey: "AIzaSyB5Gme4uc_VDMPPxQx1RjmSOXg45IksZhw",
+                authDomain: "foundit-58793.firebaseapp.com",
+                databaseURL: "https://foundit-58793-default-rtdb.firebaseio.com",
+                projectId: "foundit-58793",
+                storageBucket: "foundit-58793.appspot.com",
+                messagingSenderId: "596668788378",
+                appId: "1:596668788378:web:8e8d0b0bb36f8dee9fb923"
+            };
+    
+            // Initialize Firebase
+            const app = initializeApp(firebaseConfig);
+            const database = getDatabase(app);
+    
+            // Contact form submission
+            document.getElementById("contactForm").addEventListener("submit", function(e) {
+                e.preventDefault();
+    
+                // Get form values
+                const fullName = document.getElementById("fullName").value;
+                const email = document.getElementById("email").value;
+                const phone = document.getElementById("phone").value;
+                const message = document.getElementById("message").value;
+    
+                // Save data to Firebase
+                push(ref(database, "contacts"), {
+                    fullName: fullName,
+                    email: email,
+                    phone: phone,
+                    message: message
+                }).then(() => {
+                    // Show success message
+                    document.getElementById("responseMessage").style.display = "block";
+                    
+                    // Clear form
+                    document.getElementById("contactForm").reset();
+                }).catch((error) => {
+                    alert("Error: " + error.message);
+                });
+            });
+        </script>
+    
+</body>
+</html>
